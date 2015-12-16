@@ -1,0 +1,10 @@
+    This is a paragraph #1? Yes. New line, caret return... Now it's time for listing!
+    This is a test file...
+    //:
+    public class Main {
+        public static void main(String[] args) {
+            System.out.println("Helloworld");
+        }
+    }
+    //:~
+    Wow, it was great... By the way, this is par. #3.
