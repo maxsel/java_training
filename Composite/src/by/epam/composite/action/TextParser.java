@@ -16,6 +16,8 @@ public class TextParser {
     private static final String PARAGRAPH = "(^\\s\\s\\s\\s(?![^\\n]*//:)[^\\n]+\\n)";
     private static final String LISTING = "(^\\s*//:.*?//:~\\s*\\n)";
 
+    private int hidden = 2;
+
     public static Composite parseText(String text) throws ParseException {
         Composite parsedText = new Composite(ComponentType.TEXT);
         Matcher paragraphOrListing = Pattern.compile(PARAGRAPH_OR_LISTING, Pattern.DOTALL).matcher(text);
