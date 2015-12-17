@@ -25,8 +25,7 @@ public class Main
                 LogManager.getLoggerRepository());
     }
 
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         LOG.info("Application started.");
 
         TaxiStation taxiStation = Creator.create();

@@ -2,8 +2,8 @@ package by.epam.selyuk.taxistation.reporter;
 
 import by.epam.selyuk.taxistation.entity.TaxiStation;
 
-public interface Reporter
-{
+public interface Reporter {
+
     void open();
 
     void print(TaxiStation taxiStation);

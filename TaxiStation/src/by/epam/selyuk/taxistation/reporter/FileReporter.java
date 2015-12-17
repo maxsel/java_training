@@ -15,13 +15,7 @@ public class FileReporter implements Reporter
     /* getting the logger reference */
     public final static Logger LOG = Logger.getLogger(FileReporter.class);
 
-    /* initializing the logger configuration */
-    static {
-        new DOMConfigurator().doConfigure("./resources/log4j.xml",
-                LogManager.getLoggerRepository());
-    }
-
-    private static PrintWriter out = null;
+    private static PrintWriter out;
 
     public void open() {
         try {
@@ -32,9 +26,7 @@ public class FileReporter implements Reporter
             }
 
             out = new PrintWriter(file.getAbsoluteFile());
-        } catch (IOException e) {
-            LOG.error(e.getMessage(), e);
-        } catch (NullPointerException e) {
+        } catch (IOException | NullPointerException e ) {
             LOG.error(e.getMessage(), e);
         }
     }

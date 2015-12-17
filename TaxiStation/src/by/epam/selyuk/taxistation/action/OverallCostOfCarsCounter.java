@@ -9,8 +9,7 @@ import java.util.List;
 public class OverallCostOfCarsCounter {
     public static int countCost(TaxiStation taxiStation) {
         int overallCost = 0;
-        for (Car c : taxiStation)
-        {
+        for (Car c : taxiStation) {
             overallCost += c.getCost();
         }
         return overallCost;
