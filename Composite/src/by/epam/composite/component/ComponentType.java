@@ -9,7 +9,6 @@ public enum ComponentType {
     SENTENCE,
     LEXEME,
     WORD,
-    PUNCT_MARK,
     SYMBOL,
     LISTING
 }

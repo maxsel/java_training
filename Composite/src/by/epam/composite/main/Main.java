@@ -2,6 +2,7 @@ package by.epam.composite.main;
 
 import by.epam.composite.action.TextParser;
 import by.epam.composite.component.Composite;
+import by.epam.composite.exception.ParseException;
 import by.epam.composite.util.FileUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -22,15 +23,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
         String text;
         try {
-            // or: StandardCharsets.UTF_8
             text = FileUtils.readFile("./resources/text.txt", Charset.defaultCharset());
-            LOG.debug(text);
-            //Composite parsedText = TextParser.parseText(text);
-            //LOG.debug(parsedText);
-        } catch (IOException e) {
+            Composite parsedText = TextParser.parseText(text);
+            LOG.debug(parsedText);
+        } catch (IOException | ParseException e) {
             LOG.error(e);
         }
     }

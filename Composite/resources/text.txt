@@ -1,10 +1,11 @@
-    This is a paragraph #1? Yes. New line, caret return... Now it's time for listing!
+    This is a paragraph #1? New line, caret return... Now it's time for listing!
+    Hello world, motherfucker.
     This is a test file...
     //:
     public class Main {
         public static void main(String[] args) {
-            System.out.println("Helloworld");
+            System.out.println("Hello, world!");
         }
     }
     //:~
-    Wow, it was great... By the way, this is par. #3.
+    Wow, it was great... By the way, this is par.#3.

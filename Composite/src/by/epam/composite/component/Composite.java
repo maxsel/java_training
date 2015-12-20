@@ -21,8 +21,37 @@ public class Composite implements Component {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Component c : childComponents) {
-            sb.append(c);
+        for (int i = 0; i < childComponents.size(); i++) {
+            Component child = childComponents.get(i);
+            switch (child.getType()) {
+                case TEXT:
+                    sb.append(child.toString());
+                    break;
+                case LISTING:
+                    sb.append(child.toString());
+                    break;
+                case PARAGRAPH:
+                    sb.append("    " + child + "\n");
+                    break;
+                case SENTENCE:
+                    sb.append(child.toString());
+                    break;
+                case LEXEME:
+                    if (i != childComponents.size() - 1) {
+                        sb.append(child + " ");
+                    } /*else if (i < childComponents.size() - 1) {
+                        sb.append(" " + child + " ");
+                    }*/ else {
+                        sb.append(child + " ");
+                    }
+                    break;
+                case WORD:
+                    sb.append(child.toString());
+                    break;
+                case SYMBOL:
+                    sb.append(child.toString());
+                    break;
+            }
         }
         return sb.toString();
     }
