@@ -1,11 +1,12 @@
 package by.epam.composite.component;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by maxsel on 16.12.15.
  */
-public class Composite implements Component {
+public class Composite implements Component, Iterable<Component> {
     private ArrayList<Component> childComponents = new ArrayList<>();
     private ComponentType type;
 
@@ -24,36 +25,33 @@ public class Composite implements Component {
         for (int i = 0; i < childComponents.size(); i++) {
             Component child = childComponents.get(i);
             switch (child.getType()) {
-                case TEXT:
-                    sb.append(child.toString());
-                    break;
-                case LISTING:
-                    sb.append(child.toString());
-                    break;
                 case PARAGRAPH:
-                    sb.append("    " + child + "\n");
-                    break;
-                case SENTENCE:
-                    sb.append(child.toString());
-                    break;
-                case LEXEME:
+                    sb.append("    " + child);
                     if (i != childComponents.size() - 1) {
-                        sb.append(child + " ");
-                    } /*else if (i < childComponents.size() - 1) {
-                        sb.append(" " + child + " ");
-                    }*/ else {
-                        sb.append(child + " ");
+                        sb.append("\n");
                     }
                     break;
-                case WORD:
-                    sb.append(child.toString());
+                case SENTENCE:
+                case LEXEME:
+                    sb.append(child);
+                    if (i != childComponents.size() - 1) {
+                        sb.append(" ");
+                    }
                     break;
+                case TEXT:
+                case LISTING:
+                case WORD:
                 case SYMBOL:
-                    sb.append(child.toString());
+                    sb.append(child);
                     break;
             }
         }
         return sb.toString();
+    }
+
+    @Override
+    public Iterator<Component> iterator() {
+        return childComponents.iterator();
     }
 
     public void addChild(Component c) {

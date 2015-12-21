@@ -1,4 +1,4 @@
-package by.epam.composite.action;
+package by.epam.composite.parser;
 
 import by.epam.composite.component.ComponentType;
 import by.epam.composite.component.Composite;
@@ -16,8 +16,8 @@ public class TextParser {
     private static final String PARAGRAPH_OR_LISTING = "((^\\s\\s\\s\\s(?![^\\n]*//:)[^\\n]+\\n)|(^\\s*//:.*?//:~\\s*\\n))";
     private static final String PARAGRAPH = "(^\\s\\s\\s\\s(?![^\\n]*//:)[^\\n]+\\n)";
     private static final String LISTING = "(^\\s*//:.*?//:~\\s*\\n)";
-    private static final String SENTENCE = "(((?<=\\s)[A-Z]|^[A-Z])([A-Za-z0-9\\s\\,\\;\\:\\+\\-\\*\\/\\=\\|\\(\\)\\{\\}\\[\\]\\#\\_\\^\\\"\\@\\$\\%\\&\\'\\⋅\\\\]|(?<!\\s)\\.(?!\\s))+([\\.\\?\\!](?=\\s)|[\\.\\?\\!]$))";
-    private static final String LEXEME = "(^.+?(?=\\s))|((?<=\\s).+?(?=\\s))|((?<=\\s).+?$)";
+    private static final String SENTENCE = "(((?<=\\s)[A-Z]|^[A-Z])([A-Za-z0-9\\s,;:\\+\\-\\*/=\\|\\(\\)\\{\\}\\[\\]#_\\^\"@\\$%&'⋅\\\\]|(?<!\\s)\\.(?!\\s))+([\\.\\?!](?=\\s)|[\\.\\?!]$))";
+    private static final String LEXEME = "(^.+?(?=\\s))|((?<=\\s).+?(?=\\s))|((?<=\\s).+?$)|(^.+?$)";
     private static final String WORD = "([A-Za-z0-9-]+)";
 
     public static Composite parseText(String text) throws ParseException {
@@ -94,9 +94,11 @@ public class TextParser {
 
     private static Composite parseWord(String word) {
         Composite parsedWord = new Composite(ComponentType.WORD);
+
         for (Character c : word.toCharArray()) {
             parsedWord.addChild(new Symbol(c));
         }
+
         return parsedWord;
     }
 }

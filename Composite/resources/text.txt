@@ -1,6 +1,7 @@
-    This is a paragraph #1? New line, caret return... Now it's time for listing!
-    Hello world, motherfucker.
+    Hello world, worldhello. This is plain old sentence? This is plain old sentence. This is plain old sentence.
+    This is a paragraph #1? Yes no. What the hell. Hey. New line, caret return... Now it's time for listing!
     This is a test file...
+    Word. Two words. Happy three words. Four absolutely senseless words. Five words just for test. Six words probably is too much.
     //:
     public class Main {
         public static void main(String[] args) {
