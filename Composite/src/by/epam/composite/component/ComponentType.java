@@ -1,7 +1,7 @@
 package by.epam.composite.component;
 
 /**
- * Created by maxsel on 16.12.15.
+ * Created by Maxim Selyuk on 16.12.15.
  */
 public enum ComponentType {
     TEXT,

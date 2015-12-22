@@ -4,13 +4,13 @@ import by.epam.composite.component.ComponentType;
 import by.epam.composite.component.Composite;
 import by.epam.composite.component.Listing;
 import by.epam.composite.component.Symbol;
-import by.epam.composite.exception.ParseException;
+import by.epam.composite.exception.CompositeParseException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by maxsel on 16.12.15.
+ * Created by Maxim Selyuk on 16.12.15.
  */
 public class TextParser {
     private static final String PARAGRAPH_OR_LISTING = "((^\\s\\s\\s\\s(?![^\\n]*//:)[^\\n]+\\n)|(^\\s*//:.*?//:~\\s*\\n))";
@@ -20,12 +20,18 @@ public class TextParser {
     private static final String LEXEME = "(^.+?(?=\\s))|((?<=\\s).+?(?=\\s))|((?<=\\s).+?$)|(^.+?$)";
     private static final String WORD = "([A-Za-z0-9-]+)";
 
-    public static Composite parseText(String text) throws ParseException {
+    public static Composite parseText(String text)
+            throws CompositeParseException {
+
         Composite parsedText = new Composite(ComponentType.TEXT);
 
-        Matcher paragraphOrListing = Pattern.compile(PARAGRAPH_OR_LISTING, Pattern.DOTALL).matcher(text);
-        Matcher paragraph = Pattern.compile(PARAGRAPH, Pattern.DOTALL).matcher("");
-        Matcher listing = Pattern.compile(LISTING, Pattern.DOTALL).matcher("");
+        Matcher paragraphOrListing = Pattern.compile(PARAGRAPH_OR_LISTING,
+                                                        Pattern.DOTALL)
+                                                .matcher(text);
+        Matcher paragraph = Pattern.compile(PARAGRAPH, Pattern.DOTALL)
+                                        .matcher(text);
+        Matcher listing = Pattern.compile(LISTING, Pattern.DOTALL)
+                                        .matcher(text);
         while (paragraphOrListing.find()) {
             String component = paragraphOrListing.group();
             paragraph.reset(component);
@@ -35,7 +41,7 @@ public class TextParser {
             } else if (listing.matches()) {
                 parsedText.addChild(new Listing(component));
             } else {
-                throw new ParseException();
+                throw new CompositeParseException();
             }
             text = text.substring(paragraphOrListing.end());
             paragraphOrListing.reset(text);
@@ -47,7 +53,8 @@ public class TextParser {
     private static Composite parseParagraph(String paragraph) {
         Composite parsedParagraph = new Composite(ComponentType.PARAGRAPH);
 
-        Matcher sentenceMatcher = Pattern.compile(SENTENCE, Pattern.DOTALL).matcher(paragraph);
+        Matcher sentenceMatcher = Pattern.compile(SENTENCE, Pattern.DOTALL)
+                                            .matcher(paragraph);
         while (sentenceMatcher.find()) {
             String sentence = sentenceMatcher.group();
             parsedParagraph.addChild(parseSentence(sentence));
@@ -59,7 +66,8 @@ public class TextParser {
     private static Composite parseSentence(String sentence) {
         Composite parsedSentence = new Composite(ComponentType.SENTENCE);
 
-        Matcher lexemeMatcher = Pattern.compile(LEXEME, Pattern.DOTALL).matcher(sentence);
+        Matcher lexemeMatcher = Pattern.compile(LEXEME, Pattern.DOTALL)
+                                        .matcher(sentence);
         while (lexemeMatcher.find()) {
             String lexeme = lexemeMatcher.group();
             parsedSentence.addChild(parseLexeme(lexeme));
@@ -71,7 +79,8 @@ public class TextParser {
     private static Composite parseLexeme(String lexeme) {
         Composite parsedLexeme = new Composite(ComponentType.LEXEME);
 
-        Matcher wordMatcher = Pattern.compile(WORD, Pattern.DOTALL).matcher(lexeme);
+        Matcher wordMatcher = Pattern.compile(WORD, Pattern.DOTALL)
+                                        .matcher(lexeme);
         while (wordMatcher.find()) {
             int start = wordMatcher.start();
             if (start == 0) {

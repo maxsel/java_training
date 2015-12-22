@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Created by maxsel on 16.12.15.
+ * Created by Maxim Selyuk on 16.12.15.
  */
 public class Composite implements Component, Iterable<Component> {
     private ArrayList<Component> childComponents = new ArrayList<>();
@@ -20,13 +20,32 @@ public class Composite implements Component, Iterable<Component> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Composite composite = (Composite) o;
+
+        if (!childComponents.equals(composite.childComponents)) return false;
+        return getType() == composite.getType();
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = childComponents.hashCode();
+        result = 31 * result + getType().hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < childComponents.size(); i++) {
             Component child = childComponents.get(i);
             switch (child.getType()) {
                 case PARAGRAPH:
-                    sb.append("    " + child);
+                    sb.append("    ").append(child);
                     if (i != childComponents.size() - 1) {
                         sb.append("\n");
                     }
