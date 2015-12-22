@@ -1,17 +1,13 @@
 package by.epam.composite.main;
 
 import by.epam.composite.action.SentencesByWordsCountSorter;
-import by.epam.composite.testaction.PrintAllLeafs;
-import by.epam.composite.parser.TextParser;
+import by.epam.composite.action.UniqueWordsFinder;
 import by.epam.composite.component.Composite;
 import by.epam.composite.exception.ParseException;
-import by.epam.composite.testaction.PrintAllLexemes;
-import by.epam.composite.testaction.PrintAllSentences;
-import by.epam.composite.testaction.PrintAllWords;
+import by.epam.composite.parser.TextParser;
 import by.epam.composite.util.FileUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.apache.log4j.lf5.util.StreamUtils;
 import org.apache.log4j.xml.DOMConfigurator;
 
 import java.io.IOException;
@@ -21,6 +17,8 @@ import java.nio.charset.Charset;
  * Created by maxsel on 16.12.15.
  */
 public class Main {
+    // TODO: add chain of resp.
+    // TODO: add two more functions
     public final static Logger LOG = Logger.getLogger(Main.class);
 
     static {
@@ -34,11 +32,10 @@ public class Main {
             text = FileUtils.readFile("./resources/text.txt", Charset.defaultCharset());
             Composite parsedText = TextParser.parseText(text);
             LOG.debug(parsedText + "\n");
-            //PrintAllLeafs.print(parsedText);
-            //PrintAllWords.print(parsedText);
-            //PrintAllLexemes.print(parsedText);
-            //PrintAllSentences.print(parsedText);
+            LOG.debug("\nSentences sorted by words count:\n");
             SentencesByWordsCountSorter.sort(parsedText).forEach(LOG::debug);
+            LOG.debug("\nUnique words from the first sentence:\n");
+            UniqueWordsFinder.find(parsedText).forEach(LOG::debug);
         } catch (IOException | ParseException e) {
             LOG.error(e);
         }
