@@ -10,7 +10,7 @@ import java.io.PrintWriter;
  * Created by Maxim Selyuk on 22.12.15.
  */
 public class FileReporter implements Reporter {
-    public final static Logger LOG = Logger.getLogger(FileReporter.class);
+    public static final Logger LOG = Logger.getLogger(FileReporter.class);
 
     private static PrintWriter out;
 

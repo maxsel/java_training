@@ -21,7 +21,7 @@ import java.util.List;
  * Created by Maxim Selyuk on 16.12.15.
  */
 public class Main {
-    public final static Logger LOG = Logger.getLogger(Main.class);
+    public static final Logger LOG = Logger.getLogger(Main.class);
 
     static {
         new DOMConfigurator().doConfigure("./resources/log4j.xml",
