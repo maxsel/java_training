@@ -27,7 +27,6 @@ public class Symbol implements Component {
         Symbol symbol = (Symbol) o;
 
         return getValue() == symbol.getValue();
-
     }
 
     @Override

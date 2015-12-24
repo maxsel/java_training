@@ -9,23 +9,20 @@ import java.io.PrintWriter;
 /**
  * Created by Maxim Selyuk on 22.12.15.
  */
-public class FileReporter implements Reporter
-{
+public class FileReporter implements Reporter {
     public final static Logger LOG = Logger.getLogger(FileReporter.class);
 
     private static PrintWriter out;
 
-    public void open() {
+    public void open(String path) {
         try {
-            File file = new File("./output/output.txt"); //exception
-
+            File file = new File(path);
             if (!file.exists()) {
                 file.createNewFile();
             }
-
             out = new PrintWriter(file.getAbsoluteFile());
         } catch (IOException | NullPointerException e ) {
-            LOG.error(e.getMessage(), e);
+            LOG.error(e);
         }
     }
 
@@ -33,7 +30,7 @@ public class FileReporter implements Reporter
         try {
             out.println(s);
         } catch (NullPointerException e) {
-            LOG.error(e.getMessage(), e);
+            LOG.error(e);
         }
     }
 
@@ -41,7 +38,7 @@ public class FileReporter implements Reporter
         try {
             out.close();
         } catch (NullPointerException e) {
-            LOG.error(e.getMessage(), e);
+            LOG.error(e);
         }
     }
 }

@@ -19,7 +19,10 @@ public class CompositeParseException extends Exception {
         super(cause);
     }
 
-    public CompositeParseException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public CompositeParseException(String message,
+                                   Throwable cause,
+                                   boolean enableSuppression,
+                                   boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

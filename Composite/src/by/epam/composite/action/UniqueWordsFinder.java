@@ -14,11 +14,11 @@ import java.util.stream.Collectors;
 public class UniqueWordsFinder {
     public static List<Component> find(Composite composite) {
         List<Component> allSentences =
-            ComponentHelper.getAllSentences(composite);
+                ComponentHelper.getAllSentences(composite);
 
         Composite firstSentence = (Composite)allSentences.get(0);
         List<Component> firstSentenceWords =
-            ComponentHelper.getAllWords(firstSentence);
+                ComponentHelper.getAllWords(firstSentence);
 
         List<Component> tailSentences =
                 allSentences.subList(1, allSentences.size());

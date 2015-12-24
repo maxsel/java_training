@@ -27,7 +27,6 @@ public class Listing implements Component {
         Listing listing = (Listing) o;
 
         return getContent().equals(listing.getContent());
-
     }
 
     @Override

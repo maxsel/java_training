@@ -25,6 +25,7 @@ public class WordsByVowelRatioSorter {
                 .sorted((o1, o2) ->
                         (int)Math.signum(o1.getValue() - o2.getValue()))
                 .map(Pair::getKey)
+                .distinct()
                 .collect(Collectors.toList());
     }
 
