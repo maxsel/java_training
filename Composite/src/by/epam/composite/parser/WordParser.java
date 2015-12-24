@@ -12,11 +12,9 @@ public class WordParser extends AbstractParser {
     @Override
     public Composite parse(String word) throws CompositeParseException {
         Composite parsedWord = new Composite(ComponentType.WORD);
-
         for (Character c : word.toCharArray()) {
             parsedWord.addChild(new Symbol(c));
         }
-
         return parsedWord;
     }
 }

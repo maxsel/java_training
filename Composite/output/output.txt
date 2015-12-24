@@ -1,9 +1,6 @@
     This is the first sentence.
-    Hello world, worldhello. This is plain old sentence? This is plain old sentence. This is plain old sentence!
-    Is this a paragraph #1? Here. And here are our dots... Now it's time for listing!
-    This is a test file...
-    Word. Two words. Happy three words. Four absolutely senseless words. Five words just for test.
-    Six words probably is too much.
+    Does this sentence end with the question mark? Yes. And here are our dots...
+    Now it's time for listing!
     //:
     public class Main {
         public static void main(String[] args) {
@@ -11,98 +8,96 @@
         }
     }
     //:~
-    Wow, it was great... By the way, we can have dots in sentences: Main.java.
-    Word with lots of consonants: xxxxxxxxxxxxxxxxxxxx.
-    Word with lots of vowels: aaaaaaaaaaaaaaaaaaaa.
+    Now - several sentences for sorting by wordsCount test. Two words.
+    Happy three words. Four absolutely senseless words.
+    Five words just for test. Six words probably is too many.
+    By the way, we can have dots inside sentences: Main.java.
+    In our case comparing two words is case-sensitive.
+    Newline at the end of file is essential.
 
 
 (#2) SENTENCES SORTED BY WORDS COUNT:
 
-Here.
-Word.
+Yes.
 Two words.
-Hello world, worldhello.
 Happy three words.
-Is this a paragraph #1?
 Four absolutely senseless words.
-Wow, it was great...
 This is the first sentence.
-This is plain old sentence?
-This is plain old sentence.
-This is plain old sentence!
 And here are our dots...
-This is a test file...
 Five words just for test.
 Now it's time for listing!
-Six words probably is too much.
-Word with lots of consonants: xxxxxxxxxxxxxxxxxxxx.
-Word with lots of vowels: aaaaaaaaaaaaaaaaaaaa.
-By the way, we can have dots in sentences: Main.java.
+Six words probably is too many.
+Does this sentence end with the question mark?
+In our case comparing two words is case-sensitive.
+Newline at the end of file is essential.
+Now - several sentences for sorting by wordsCount test.
+By the way, we can have dots inside sentences: Main.java.
 
 (#3) UNIQUE WORDS FROM THE FIRST SENTENCE:
 
+This
 first
 
 (#7) WORDS SORTED BY VOWELS RATIO:
 
 s
+-
+by
 By
-xxxxxxxxxxxxxxxxxxxx
 first
-world
 words
 Happy
 This
 this
+with
+mark
 dots
 test
-Word
 just
 probably
-much
-with
-lots
+many
 listing
-worldhello
-consonants
+sorting
+wordsCount
 the
-old
-paragraph
+end
+Yes
 And
 Now
 for
+sentences
 Two
 senseless
 Six
-Wow
-was
 way
 can
-sentences
-vowels
+comparing
+two
 sentence
-Hello
-plain
 three
 absolutely
-great
+several
+case-sensitive
+Newline
+essential
 is
-Is
-Here
+Does
+question
 here
 it
 time
-file
 Four
 Five
 we
 have
-in
+inside
 Main
 java
+In
+case
+at
 of
+file
 are
 our
 too
-a
-aaaaaaaaaaaaaaaaaaaa

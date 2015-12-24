@@ -12,29 +12,26 @@ import java.util.regex.Pattern;
  * Created by Maxim Selyuk on 24.12.15.
  */
 public class TextParser extends AbstractParser {
-    private static final String PARAGRAPH_OR_LISTING =
+    private static final String PARAGRAPH_OR_LISTING_REGEX =
             "((^\\s\\s\\s\\s(?![^\\n]*//:)[^\\n]+\\n)"
                     + "|(^\\s*//:.*?//:~\\s*\\n))";
-    private static final String PARAGRAPH =
+    private static final String PARAGRAPH_REGEX =
             "(^\\s\\s\\s\\s(?![^\\n]*//:)[^\\n]+\\n)";
-    private static final String LISTING = "(^\\s*//:.*?//:~\\s*\\n)";
+    private static final String LISTING_REGEX = "(^\\s*//:.*?//:~\\s*\\n)";
 
     @Override
-    public Composite parse(String text)
-            throws CompositeParseException {
+    public Composite parse(String text) throws CompositeParseException {
         if (successor == null) {
             throw new CompositeParseException("Incomplete chain of parsers");
         }
-
         Composite parsedText = new Composite(ComponentType.TEXT);
-
-        Matcher paragraphOrListing = Pattern.compile(PARAGRAPH_OR_LISTING,
-                                                                Pattern.DOTALL)
-                                                .matcher(text);
-        Matcher paragraph = Pattern.compile(PARAGRAPH, Pattern.DOTALL)
-                                    .matcher(text);
-        Matcher listing = Pattern.compile(LISTING, Pattern.DOTALL)
-                                    .matcher(text);
+        Matcher paragraphOrListing =
+                Pattern.compile(PARAGRAPH_OR_LISTING_REGEX, Pattern.DOTALL)
+                        .matcher(text);
+        Matcher paragraph =
+                Pattern.compile(PARAGRAPH_REGEX, Pattern.DOTALL).matcher(text);
+        Matcher listing =
+                Pattern.compile(LISTING_REGEX, Pattern.DOTALL).matcher(text);
         while (paragraphOrListing.find()) {
             String component = paragraphOrListing.group();
             paragraph.reset(component);
@@ -49,7 +46,6 @@ public class TextParser extends AbstractParser {
             text = text.substring(paragraphOrListing.end());
             paragraphOrListing.reset(text);
         }
-
         return parsedText;
     }
 }

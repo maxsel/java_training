@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  * Created by Maxim Selyuk on 24.12.15.
  */
 public class ParagraphParser extends AbstractParser {
-    private static final String SENTENCE =
+    private static final String SENTENCE_REGEX =
             "(((?<=\\s)[A-Z]|^[A-Z])"
                     + "([A-Za-z0-9\\s,;:\\+\\-\\*/="
                     + "\\|\\(\\)\\{\\}\\[\\]#_\\^\"@\\$%&'⋅\\\\]"
@@ -23,16 +23,14 @@ public class ParagraphParser extends AbstractParser {
         if (successor == null) {
             throw new CompositeParseException("Incomplete chain of parsers");
         }
-
         Composite parsedParagraph = new Composite(ComponentType.PARAGRAPH);
-
-        Matcher sentenceMatcher = Pattern.compile(SENTENCE, Pattern.DOTALL)
-                                            .matcher(paragraph);
+        Matcher sentenceMatcher =
+                Pattern.compile(SENTENCE_REGEX, Pattern.DOTALL)
+                        .matcher(paragraph);
         while (sentenceMatcher.find()) {
             String sentence = sentenceMatcher.group();
             parsedParagraph.addChild(successor.parse(sentence));
         }
-
         return parsedParagraph;
     }
 }

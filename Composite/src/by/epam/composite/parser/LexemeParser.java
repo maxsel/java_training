@@ -12,18 +12,16 @@ import java.util.regex.Pattern;
  * Created by Maxim Selyuk on 24.12.15.
  */
 public class LexemeParser extends AbstractParser {
-    private static final String WORD = "([A-Za-z-]+)";
+    private static final String WORD_REGEX = "([A-Za-z-]+)";
 
     @Override
     public Composite parse(String lexeme) throws CompositeParseException {
         if (successor == null) {
             throw new CompositeParseException("Incomplete chain of parsers");
         }
-
         Composite parsedLexeme = new Composite(ComponentType.LEXEME);
-
-        Matcher wordMatcher = Pattern.compile(WORD, Pattern.DOTALL)
-                                        .matcher(lexeme);
+        Matcher wordMatcher =
+                Pattern.compile(WORD_REGEX, Pattern.DOTALL).matcher(lexeme);
         while (wordMatcher.find()) {
             int start = wordMatcher.start();
             if (start == 0) {
@@ -40,7 +38,6 @@ public class LexemeParser extends AbstractParser {
         for (Character c : lexeme.toCharArray()) {
             parsedLexeme.addChild(new Symbol(c));
         }
-
         return parsedLexeme;
     }
 }
