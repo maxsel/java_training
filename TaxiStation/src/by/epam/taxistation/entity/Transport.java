@@ -1,6 +1,6 @@
-package by.epam.selyuk.taxistation.entity;
+package by.epam.taxistation.entity;
 
-import by.epam.selyuk.taxistation.exception.IllegalSetValueException;
+import by.epam.taxistation.exception.IllegalSetValueException;
 
 public abstract class Transport {
     private String registrationIdentifier;
@@ -13,11 +13,14 @@ public abstract class Transport {
         return registrationIdentifier;
     }
 
-    public void setRegistrationIdentifier(String registrationIdentifier) throws IllegalSetValueException {
-        if ((registrationIdentifier != null && !registrationIdentifier.isEmpty())) {
+    public void setRegistrationIdentifier(String registrationIdentifier)
+            throws IllegalSetValueException {
+        if ((registrationIdentifier != null
+                && !registrationIdentifier.isEmpty())) {
             this.registrationIdentifier = registrationIdentifier;
         } else {
-            throw new IllegalSetValueException("Transport's registration ID cannot be null or empty.");
+            throw new IllegalSetValueException("Transport's registration ID" +
+                    " cannot be null or empty.");
         }
     }
 
@@ -45,7 +48,8 @@ public abstract class Transport {
         if (cost >= 0) {
             this.cost = cost;
         } else {
-            throw new IllegalSetValueException("Transport's cost cannot be less that 0.");
+            throw new IllegalSetValueException("Transport's cost" +
+                    " cannot be less that 0.");
         }
     }
 
@@ -57,15 +61,18 @@ public abstract class Transport {
         if (cost >= 0) {
             this.year = year;
         } else {
-            throw new IllegalSetValueException("Transport's production year cannot be less that 0.");
+            throw new IllegalSetValueException("Transport's production year" +
+                    " cannot be less that 0.");
         }
     }
 
-    public Transport(String registrationIdentifier) throws IllegalSetValueException {
+    public Transport(String registrationIdentifier)
+            throws IllegalSetValueException {
         setRegistrationIdentifier(registrationIdentifier);
     }
 
-    public Transport(String registrationIdentifier, String make, String model, int year, int cost)
+    public Transport(String registrationIdentifier, String make, String model,
+                     int year, int cost)
             throws IllegalSetValueException{
         setRegistrationIdentifier(registrationIdentifier);
         this.make = make;

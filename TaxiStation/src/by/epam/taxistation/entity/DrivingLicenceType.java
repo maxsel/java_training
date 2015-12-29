@@ -1,4 +1,4 @@
-package by.epam.selyuk.taxistation.entity;
+package by.epam.taxistation.entity;
 
 public enum DrivingLicenceType {
     A,

@@ -1,8 +1,5 @@
-package by.epam.selyuk.taxistation.exception;
+package by.epam.taxistation.exception;
 
-/**
- * Created by maxsel on 30.11.15.
- */
 public class IllegalSetValueException extends Exception {
     public IllegalSetValueException() {
     }
@@ -19,7 +16,10 @@ public class IllegalSetValueException extends Exception {
         super(cause);
     }
 
-    public IllegalSetValueException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public IllegalSetValueException(String message,
+                                    Throwable cause,
+                                    boolean enableSuppression,
+                                    boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

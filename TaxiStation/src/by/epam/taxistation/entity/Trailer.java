@@ -1,12 +1,16 @@
-package by.epam.selyuk.taxistation.entity;
+package by.epam.taxistation.entity;
 
-import by.epam.selyuk.taxistation.exception.IllegalSetValueException;
-import by.epam.selyuk.taxistation.utility.IdGenerator;
+import by.epam.taxistation.exception.IllegalSetValueException;
+import by.epam.taxistation.utility.IdGenerator;
 
 public class Trailer extends Transport {
-    public final int TRAILER_ID = IdGenerator.generate();
+    private int trailerId;
     private int maxWeight;
     private int priceHour;
+
+    public int getTrailerId() {
+        return trailerId;
+    }
 
     public int getMaxWeight() {
         return maxWeight;
@@ -16,7 +20,8 @@ public class Trailer extends Transport {
         if (maxWeight >= 0) {
             this.maxWeight = maxWeight;
         } else {
-            throw new IllegalSetValueException("Trailer's maxWeight cannot be less that 0.");
+            throw new IllegalSetValueException("Trailer's maxWeight" +
+                    " cannot be less that 0.");
         }
     }
 
@@ -28,26 +33,30 @@ public class Trailer extends Transport {
         if (priceHour >= 0) {
             this.priceHour = priceHour;
         } else {
-            throw new IllegalSetValueException("Trailer's priceHour cannot be less that 0.");
+            throw new IllegalSetValueException("Trailer's priceHour" +
+                    " cannot be less that 0.");
         }
     }
 
-    public Trailer(String registrationIdentifier) throws IllegalSetValueException {
+    public Trailer(String registrationIdentifier)
+            throws IllegalSetValueException {
         super(registrationIdentifier);
+        this.trailerId = IdGenerator.generate();
     }
 
-    public Trailer(String registrationIdentifier, String make, String model, int year, int cost,
-                   int maxWeight, int priceHour)
+    public Trailer(String registrationIdentifier, String make, String model,
+                   int year, int cost, int maxWeight, int priceHour)
             throws IllegalSetValueException {
         super(registrationIdentifier, make, model, year, cost);
         setMaxWeight(maxWeight);
         setPriceHour(priceHour);
+        this.trailerId = IdGenerator.generate();
     }
 
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Trailer{");
-        sb.append("ID=").append(TRAILER_ID);
+        sb.append("ID=").append(getTrailerId());
         sb.append(", ").append(super.toString());
         sb.append(", maxWeight=").append(getMaxWeight());
         sb.append(", priceHour=").append(getPriceHour());

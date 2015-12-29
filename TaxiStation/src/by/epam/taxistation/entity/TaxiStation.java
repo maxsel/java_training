@@ -1,18 +1,23 @@
-package by.epam.selyuk.taxistation.entity;
+package by.epam.taxistation.entity;
 
-import by.epam.selyuk.taxistation.utility.IdGenerator;
+import by.epam.taxistation.utility.IdGenerator;
 
 import java.util.*;
 
 public class TaxiStation implements Iterable<Car> {
-    public final int TAXISTATION_ID = IdGenerator.generate();
+    private int taxiStationId;
     private List<Car> carList;
+
+    public int getTaxiStationId() {
+        return taxiStationId;
+    }
 
     public List<Car> getCarList() {
         return Collections.unmodifiableList(carList);
     }
 
     public TaxiStation() {
+        taxiStationId = IdGenerator.generate();
         carList = new ArrayList<>();
     }
 
@@ -50,7 +55,7 @@ public class TaxiStation implements Iterable<Car> {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("TaxiStation {\n");
-        sb.append("\tID = ").append(TAXISTATION_ID).append(",\n");
+        sb.append("\tID = ").append(getTaxiStationId()).append(",\n");
         sb.append("\tcarList : [\n");
         for(Car c : carList) {
             sb.append("\t\t").append(c).append("\n");

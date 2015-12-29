@@ -1,4 +1,4 @@
-package by.epam.selyuk.taxistation.utility;
+package by.epam.taxistation.utility;
 
 public class IdGenerator {
     private static int id = 0;

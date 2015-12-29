@@ -1,6 +1,6 @@
-package by.epam.selyuk.taxistation.comparator;
+package by.epam.taxistation.comparator;
 
-import by.epam.selyuk.taxistation.entity.Car;
+import by.epam.taxistation.entity.Car;
 
 import java.util.Comparator;
 

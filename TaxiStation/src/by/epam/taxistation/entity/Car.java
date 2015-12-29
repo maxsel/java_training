@@ -1,6 +1,6 @@
-package by.epam.selyuk.taxistation.entity;
+package by.epam.taxistation.entity;
 
-import by.epam.selyuk.taxistation.exception.IllegalSetValueException;
+import by.epam.taxistation.exception.IllegalSetValueException;
 
 public abstract class Car extends Transport {
     private String driver;
@@ -13,11 +13,13 @@ public abstract class Car extends Transport {
         return fuelConsumption;
     }
 
-    public void setFuelConsumption(int fuelConsumption) throws IllegalSetValueException {
+    public void setFuelConsumption(int fuelConsumption)
+            throws IllegalSetValueException {
         if (fuelConsumption >= 0) {
             this.fuelConsumption = fuelConsumption;
         } else {
-            throw new IllegalSetValueException("Car's fuelConsumption cannot be less that 0.");
+            throw new IllegalSetValueException("Car's fuelConsumption" +
+                    " cannot be less that 0.");
         }
     }
 
@@ -29,7 +31,8 @@ public abstract class Car extends Transport {
         if (maxWeight >= 0) {
             this.maxWeight = maxWeight;
         } else {
-            throw new IllegalSetValueException("Car's maxWeight cannot be less that 0.");
+            throw new IllegalSetValueException("Car's maxWeight" +
+                    " cannot be less that 0.");
         }
     }
 
@@ -37,11 +40,13 @@ public abstract class Car extends Transport {
         return seatsNumber;
     }
 
-    public void setSeatsNumber(int seatsNumber) throws IllegalSetValueException {
+    public void setSeatsNumber(int seatsNumber)
+            throws IllegalSetValueException {
         if (seatsNumber >= 0) {
             this.seatsNumber = seatsNumber;
         } else {
-            throw new IllegalSetValueException("Car's seatsNumber cannot be less that 0.");
+            throw new IllegalSetValueException("Car's seatsNumber" +
+                    " cannot be less that 0.");
         }
     }
 
@@ -61,12 +66,14 @@ public abstract class Car extends Transport {
         this.licenceType = licenceType;
     }
 
-    public Car(String registrationIdentifier) throws IllegalSetValueException {
+    public Car(String registrationIdentifier)
+            throws IllegalSetValueException {
         super(registrationIdentifier);
     }
 
-    public Car(String registrationIdentifier, String make, String model, int year, int cost,
-               String driver, int fuelConsumption, int seatsNumber, int maxWeight, DrivingLicenceType licenceType)
+    public Car(String registrationIdentifier, String make, String model,
+               int year, int cost, String driver, int fuelConsumption,
+               int seatsNumber, int maxWeight, DrivingLicenceType licenceType)
             throws IllegalSetValueException {
         super(registrationIdentifier, make, model, year, cost);
         setDriver(driver);

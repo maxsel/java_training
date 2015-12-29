@@ -1,10 +1,7 @@
-package by.epam.selyuk.taxistation.action;
+package by.epam.taxistation.action;
 
-import by.epam.selyuk.taxistation.entity.Car;
-import by.epam.selyuk.taxistation.entity.TaxiStation;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import by.epam.taxistation.entity.Car;
+import by.epam.taxistation.entity.TaxiStation;
 
 public class OverallCostOfCarsCounter {
     public static int countCost(TaxiStation taxiStation) {

@@ -1,10 +1,10 @@
-package by.epam.selyuk.taxistation.reporter;
+package by.epam.taxistation.reporter;
 
-import by.epam.selyuk.taxistation.entity.TaxiStation;
+import by.epam.taxistation.entity.TaxiStation;
 
 public interface Reporter {
 
-    void open();
+    void open(String path);
 
     void print(TaxiStation taxiStation);
 
