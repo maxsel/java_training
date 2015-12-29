@@ -3,6 +3,7 @@ package by.epam.composite.main;
 import by.epam.composite.action.SentencesByWordsCountSorter;
 import by.epam.composite.action.UniqueWordsFinder;
 import by.epam.composite.action.WordsByVowelRatioSorter;
+import by.epam.composite.exception.ReadFileException;
 import by.epam.composite.parser.ChainTextParser;
 import by.epam.composite.component.Component;
 import by.epam.composite.component.Composite;
@@ -59,7 +60,7 @@ public class Main {
             reporter.close();
         } catch (CompositeParseException e) {
             LOG.error(e);
-        } catch (IOException e) {
+        } catch (ReadFileException e) {
             LOG.fatal(e);
         }
     }

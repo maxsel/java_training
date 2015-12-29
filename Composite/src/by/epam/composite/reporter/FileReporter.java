@@ -17,28 +17,26 @@ public class FileReporter implements Reporter {
     public void open(String path) {
         try {
             File file = new File(path);
-            if (!file.exists()) {
-                file.createNewFile();
+            if (file != null) {
+                if (!file.exists()) {
+                    file.createNewFile();
+                }
+                out = new PrintWriter(file.getAbsoluteFile());
             }
-            out = new PrintWriter(file.getAbsoluteFile());
-        } catch (IOException | NullPointerException e ) {
+        } catch (IOException e) {
             LOG.error(e);
         }
     }
 
     public void print(String s) {
-        try {
+        if (out != null) {
             out.println(s);
-        } catch (NullPointerException e) {
-            LOG.error(e);
         }
     }
 
     public void close() {
-        try {
+        if (out != null) {
             out.close();
-        } catch (NullPointerException e) {
-            LOG.error(e);
         }
     }
 }
