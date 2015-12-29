@@ -12,8 +12,8 @@ public class Client extends Thread {
 
     private int clientId;
     private CallCenter callCenter;
-    private int attemptsMade = 0;
-    private boolean wasServed = false;
+    private int attemptsMade;
+    private boolean wasServed;
 
     public Client(CallCenter callCenter, int id) {
         super("Client #" + id);
