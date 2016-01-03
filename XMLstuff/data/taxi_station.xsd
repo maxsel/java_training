@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/taxistation"
+        xmlns:tns="http://www.example.com/taxistation"
+        elementFormDefault="qualified">
+
+    <element name="taxi-station">
+        <complexType>
+            <sequence>
+                <element ref="tns:car" minOccurs="2" maxOccurs="unbounded" />
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="transport" type="tns:Transport" abstract="true"/>
+    <element name="car" type="tns:Car" substitutionGroup="tns:transport" abstract="true"/>
+    <element name="taxi" type="tns:Taxi" substitutionGroup="tns:car" />
+    <element name="taxi-lorry" type="tns:TaxiLorry" substitutionGroup="tns:car"/>
+    <element name="minibus" type="tns:Minibus" substitutionGroup="tns:car"/>
+    <element name="trailer-car" type="tns:TrailerCar" substitutionGroup="tns:car"/>
+    <element name="trailer" type="tns:Trailer" substitutionGroup="tns:transport"/>
+
+    <complexType name="Transport">
+        <sequence>
+            <element name="reg-id" type="tns:LicenseId" />
+            <element name="make" type="string" />
+            <element name="model" type="string" />
+            <element name="year" type="positiveInteger" />
+            <element name="cost" type="positiveInteger" />
+        </sequence>
+    </complexType>
+
+    <complexType name="Car">
+        <complexContent>
+            <extension base="tns:Transport">
+                <sequence>
+                    <element name="driver" type="string" />
+                    <element name="fuel-consumption" type="positiveInteger" />
+                    <element name="seats-number" type="positiveInteger" />
+                    <element name="max-weight" type="positiveInteger" />
+                    <element name="licence-type">
+                        <simpleType>
+                            <restriction base="string">
+                                <enumeration value="DrivingLicenceType.A"/>
+                                <enumeration value="DrivingLicenceType.B"/>
+                                <enumeration value="DrivingLicenceType.C"/>
+                                <enumeration value="DrivingLicenceType.D"/>
+                                <enumeration value="DrivingLicenceType.BE"/>
+                                <enumeration value="DrivingLicenceType.CE"/>
+                                <enumeration value="DrivingLicenceType.DE"/>
+                            </restriction>
+                        </simpleType>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="Taxi">
+        <complexContent>
+            <extension base="tns:Car">
+                <sequence>
+                    <element name="price-km" type="positiveInteger" />
+                </sequence>
+                <attribute name="taxi-id" type="tns:IdType"/>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="TaxiLorry">
+        <complexContent>
+            <extension base="tns:Car">
+                <sequence>
+                    <element name="max-height" type="positiveInteger" />
+                    <element name="price-hour" type="positiveInteger" />
+                </sequence>
+                <attribute name="taxi-lorry-id" type="tns:IdType"/>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="Minibus">
+        <complexContent>
+            <extension base="tns:Car">
+                <sequence>
+                    <element name="price-hour" type="positiveInteger" />
+                </sequence>
+                <attribute name="minibus-id" type="tns:IdType"/>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="Trailer">
+        <complexContent>
+            <extension base="tns:Transport">
+                <sequence>
+                    <element name="max-weight" type="positiveInteger" />
+                    <element name="price-hour" type="positiveInteger" />
+                </sequence>
+                <attribute name="trailer-id" type="tns:IdType"/>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="TrailerCar">
+        <complexContent>
+            <extension base="tns:Car">
+                <sequence>
+                    <element name="price-hour" type="positiveInteger" />
+                    <element name="trailer" type="tns:Trailer" />
+                </sequence>
+                <attribute name="trailer-car-id" type="tns:IdType"/>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <simpleType name="LicenseId">
+        <restriction base="ID">
+            <pattern value="([A-Z][A-Z])[0-9]{4}"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="IdType">
+        <restriction base="ID">
+            <pattern value="T[1-9][0-9]*"/>
+        </restriction>
+    </simpleType>
+</schema>

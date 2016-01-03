@@ -1,0 +1,113 @@
+<taxi-station xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.example.com/taxistation"
+             xsi:schemaLocation="http://www.example.com/taxistation taxi_station.xsd">
+    <taxi taxi-id="T1">
+        <!-- from transport -->
+        <reg-id>AB1234</reg-id>
+        <make>Ford</make>
+        <model>Victoria</model>
+        <year>2000</year>
+        <cost>35000</cost>
+        <!-- from car -->
+        <driver>Vasya</driver>
+        <fuel-consumption>4</fuel-consumption>
+        <seats-number>4</seats-number>
+        <max-weight>300</max-weight>
+        <licence-type>DrivingLicenceType.B</licence-type>
+        <!-- from taxi -->
+        <price-km>300</price-km>
+    </taxi>
+    <taxi taxi-id="T9">
+        <!-- from transport -->
+        <reg-id>UV9805</reg-id>
+        <make>Volkswagen</make>
+        <model>Golf</model>
+        <year>2005</year>
+        <cost>40000</cost>
+        <!-- from car -->
+        <driver>Maxim</driver>
+        <fuel-consumption>3</fuel-consumption>
+        <seats-number>5</seats-number>
+        <max-weight>200</max-weight>
+        <licence-type>DrivingLicenceType.B</licence-type>
+        <!-- from taxi -->
+        <price-km>300</price-km>
+    </taxi>
+    <taxi taxi-id="T10">
+        <!-- from transport -->
+        <reg-id>PK4565</reg-id>
+        <make>Volkswagen</make>
+        <model>Passat</model>
+        <year>2007</year>
+        <cost>45000</cost>
+        <!-- from car -->
+        <driver>Igor</driver>
+        <fuel-consumption>3</fuel-consumption>
+        <seats-number>5</seats-number>
+        <max-weight>200</max-weight>
+        <licence-type>DrivingLicenceType.B</licence-type>
+        <!-- from taxi -->
+        <price-km>350</price-km>
+    </taxi>
+    <taxi-lorry taxi-lorry-id="T2">
+        <!-- from transport -->
+        <reg-id>RT5687</reg-id>
+        <make>KAMAZ</make>
+        <model>5320</model>
+        <year>1995</year>
+        <cost>100000</cost>
+        <!-- from car -->
+        <driver>Dimas</driver>
+        <fuel-consumption>7</fuel-consumption>
+        <seats-number>2</seats-number>
+        <max-weight>10000</max-weight>
+        <licence-type>DrivingLicenceType.C</licence-type>
+        <!-- from taxiLorry -->
+        <max-height>2</max-height>
+        <price-hour>700</price-hour>
+    </taxi-lorry>
+    <minibus minibus-id="T3">
+        <!-- from transport -->
+        <reg-id>GH8462</reg-id>
+        <make>Mercedes-Benz</make>
+        <model>Minibus</model>
+        <year>2002</year>
+        <cost>50000</cost>
+        <!-- from car -->
+        <driver>Kolyan</driver>
+        <fuel-consumption>5</fuel-consumption>
+        <seats-number>25</seats-number>
+        <max-weight>1000</max-weight>
+        <licence-type>DrivingLicenceType.D</licence-type>
+        <!-- from minibus -->
+        <price-hour>500</price-hour>
+    </minibus>
+
+    <trailer-car trailer-car-id="T4">
+        <!-- from transport -->
+        <reg-id>RB1112</reg-id>
+        <make>Lada</make>
+        <model>Kalina</model>
+        <year>2008</year>
+        <cost>30000</cost>
+        <!-- from car -->
+        <driver>Alex</driver>
+        <fuel-consumption>4</fuel-consumption>
+        <seats-number>4</seats-number>
+        <max-weight>750</max-weight>
+        <licence-type>DrivingLicenceType.CE</licence-type>
+        <!-- from trailerCar -->
+        <price-hour>200</price-hour>
+        <trailer trailer-id="T5">
+            <!-- from transport -->
+            <reg-id>TY5214</reg-id>
+            <make>Lada</make>
+            <model>Pricep</model>
+            <year>2000</year>
+            <cost>10000</cost>
+            <!-- from trailer -->
+            <max-weight>1000000</max-weight>
+            <price-hour>100</price-hour>
+        </trailer>
+    </trailer-car>
+</taxi-station>
