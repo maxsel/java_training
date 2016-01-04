@@ -85,12 +85,12 @@ public class GemHandler extends DefaultHandler {
                     current.setValue(Double.valueOf(s));
                     break;
                 case PURCHASE_YEAR:
-                    RussianGem gem1 = (RussianGem) current;
+                    RussianGem gem1 = (RussianGem)current;
                     gem1.setPurchaseYear(new BigInteger(s));
                     current = gem1;
                     break;
                 case OWNER:
-                    PrivateGem gem2 = (PrivateGem) current;
+                    PrivateGem gem2 = (PrivateGem)current;
                     gem2.setOwner(s);
                     current = gem2;
                     break;

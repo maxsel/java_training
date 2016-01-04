@@ -12,7 +12,7 @@ import java.util.Set;
 public class Main {
     public static void main(String[] args) {
         GemBuilderFactory sFactory = new GemBuilderFactory();
-        AbstractGemsBuilder builder = sFactory.createGemBuilder("sax");
+        AbstractGemsBuilder builder = sFactory.createGemBuilder("dom");
         builder.buildSetGems("data/gems.xml");
         System.out.println(builder.getGems());
         Set<Gem> gems = builder.getGems();
