@@ -19,11 +19,11 @@ public class ValidatorSAXXSD {
         SchemaFactory factory = SchemaFactory.newInstance(language);
         File schemaLocation = new File(schemaName);
         try {
-// создание схемы
+            // создание схемы
             Schema schema = factory.newSchema(schemaLocation);
-// создание валидатора на основе схемы
+            // создание валидатора на основе схемы
             Validator validator = schema.newValidator();
-// проверка документа
+            // проверка документа
             Source source = new StreamSource(filename);
             validator.validate(source);
             System.out.println(filename + " is valid.");

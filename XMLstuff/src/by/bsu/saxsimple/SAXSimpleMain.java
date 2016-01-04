@@ -1,4 +1,4 @@
-package by.bsy.saxsimple;
+package by.bsu.saxsimple;
 
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;

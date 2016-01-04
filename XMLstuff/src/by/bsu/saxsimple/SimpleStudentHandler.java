@@ -1,4 +1,4 @@
-package by.bsy.saxsimple;
+package by.bsu.saxsimple;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.Attributes;
 

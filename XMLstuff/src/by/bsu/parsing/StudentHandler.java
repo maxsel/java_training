@@ -53,7 +53,6 @@ public class StudentHandler extends DefaultHandler {
 
     public void characters(char[] ch, int start, int length) {
         String s = new String(ch, start, length).trim();
-        if (current == null) return;
         if (currentEnum != null) {
             switch (currentEnum) {
                 case NAME:
