@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ParsingWithWeb:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ParsingWithWeb_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ParsingWithWeb/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ParsingWithWeb" />
+          <element id="dir-copy" path="$PROJECT_DIR$" />
+          <element id="dir-copy" path="$PROJECT_DIR$/resources" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="jsp-api-2.0" />
+          <element id="library" level="project" name="servlet-api" />
+          <element id="library" level="project" name="log4j-api-2.5" />
+          <element id="library" level="project" name="log4j-core-2.5" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

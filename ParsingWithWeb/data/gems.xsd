@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/gems"
+        xmlns:tns="http://www.example.com/gems"
+        elementFormDefault="qualified">
+
+    <element name="gems">
+        <complexType>
+            <sequence>
+                <element ref="tns:gem" minOccurs="1" maxOccurs="unbounded" />
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="gem" type="tns:Gem" abstract="true"/>
+    <element name="russian-gem" type="tns:RussianGem" substitutionGroup="tns:gem"/>
+    <element name="private-gem" type="tns:PrivateGem" substitutionGroup="tns:gem"/>
+
+    <complexType name="Gem">
+        <sequence>
+            <element name="name" type="string" />
+            <element name="preciousness">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="PRECIOUS" />
+                        <enumeration value="SEMIPRECIOUS" />
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="origin" type="string" />
+            <element name="visual-parameters" type="tns:VisualParameters" />
+            <element name="value">
+                <simpleType>
+                    <restriction base="double">
+                        <minExclusive value="0" />
+                    </restriction>
+                </simpleType>
+            </element>
+        </sequence>
+        <attribute name="id" type="tns:IdType" use="required"/>
+        <attribute name="title" type="string" default="unnamed"/>
+    </complexType>
+
+    <complexType name="RussianGem">
+        <complexContent>
+            <extension base="tns:Gem">
+                <sequence>
+                    <element name="purchase-year" type="positiveInteger" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="PrivateGem">
+        <complexContent>
+            <extension base="tns:Gem">
+                <sequence>
+                    <element name="owner" type="string" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="VisualParameters">
+        <sequence>
+            <element name="color">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="Black" />
+                        <enumeration value="Blue" />
+                        <enumeration value="Blue-white" />
+                        <enumeration value="Brown" />
+                        <enumeration value="Colorless" />
+                        <enumeration value="Green" />
+                        <enumeration value="Orange" />
+                        <enumeration value="Pink" />
+                        <enumeration value="Red" />
+                        <enumeration value="White" />
+                        <enumeration value="Yellow" />
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="opacity">
+                <simpleType>
+                    <restriction base="nonNegativeInteger">
+                        <maxInclusive value="100" />
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="cut-type">
+                <simpleType>
+                    <restriction base="nonNegativeInteger">
+                        <minInclusive value="4" />
+                        <maxInclusive value="25" />
+                    </restriction>
+                </simpleType>
+            </element>
+        </sequence>
+    </complexType>
+
+    <simpleType name="IdType">
+        <restriction base="ID">
+            <pattern value="G-[1-9][0-9]*"/>
+        </restriction>
+    </simpleType>
+</schema>
